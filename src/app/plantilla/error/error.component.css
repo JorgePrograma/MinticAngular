@@ -1,0 +1,14 @@
+.error {
+text-align: center;
+}
+
+.error
+span
+{
+  font-size: 200px;
+  background: rgb(235, 222, 222);
+  border-radius: 70px;
+  padding: 10px;
+  box-shadow: 10 1 solid;
+  color: blue;
+}

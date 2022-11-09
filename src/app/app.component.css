@@ -1,0 +1,12 @@
+.container {
+  background: #ccc;
+  resize: both;
+  overflow: auto;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    min-height: 480px;
+    height: auto;
+  }
+}

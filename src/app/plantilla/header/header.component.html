@@ -1,0 +1,19 @@
+<nav>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="brand-logo">Logo</a>
+    <a routerLink="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li *ngIf="seInicioSesion"><a routerLink="/administracion/buscar-cliente">Clientes</a></li>
+      <li *ngIf="seInicioSesion"><a routerLink="/administracion/empleados">Empleados</a></li>
+      <li *ngIf="seInicioSesion"><a routerLink="/seguridad/cerrarsesion">salir</a></li>
+      <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/identificar">Iniciar sesion</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+  <li *ngIf="seInicioSesion"><a routerLink="/administracion/buscar-cliente">Clientes</a></li>
+      <li *ngIf="seInicioSesion"><a routerLink="/administracion/empleados">Empleados</a></li>
+      <li *ngIf="seInicioSesion"><a routerLink="/seguridad/cerrarsesion">Cambiar clave</a></li>
+      <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/identificar">Iniciar sesion</a></li>
+  </ul>
