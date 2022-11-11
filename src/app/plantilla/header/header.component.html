@@ -1,11 +1,14 @@
 <nav>
   <div class="nav-wrapper">
-    <a routerLink="/" class="brand-logo">Logo</a>
+    <a routerLink="/" class="brand-logo">Gensoft</a>
     <a routerLink="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li *ngIf="seInicioSesion"><a routerLink="/administracion/buscar-cliente">Clientes</a></li>
-      <li *ngIf="seInicioSesion"><a routerLink="/administracion/empleados">Empleados</a></li>
-      <li *ngIf="seInicioSesion"><a routerLink="/seguridad/cerrarsesion">salir</a></li>
+      <li *ngIf="!seInicioSesion"><a routerLink="/administracion/listar-clientes">Clientes</a></li>
+      <li *ngIf="!seInicioSesion"><a routerLink="/administracion/listar-empleados">Empleados</a></li>
+      <li *ngIf="!seInicioSesion"><a routerLink="/administracion/listar-directivos">Directivos</a></li>
+      <li *ngIf="!seInicioSesion"><a routerLink="/productos/listar-vehiculos">Vehiculos</a></li>
+      <li *ngIf="!seInicioSesion"><a routerLink="/productos/listar-categorias">Categorias</a></li>
+      <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/cerrarsesion">salir</a></li>
       <li *ngIf="!seInicioSesion"><a routerLink="/seguridad/identificar">Iniciar sesion</a></li>
     </ul>
   </div>

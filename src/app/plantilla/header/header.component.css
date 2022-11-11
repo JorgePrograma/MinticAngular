@@ -1,3 +1,11 @@
 .nav-wrapper{
   background: rgba(21, 255, 0, 0.658);
 }
+.brand-logo{
+  margin-top: 5px;
+  padding: 0px;
+  margin-left: 10px;
+  border-radius: 10px;
+  color: aquamarine;
+  border-top: 1px solid rgba(46, 53, 46, 0.658);
+}

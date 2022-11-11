@@ -1,0 +1,21 @@
+
+<p>listar-categorias works!</p>
+<u class="btn" routerLink="/productos/crear-categoria">Nuevo producto</u>
+<table class="table tresponsive brown">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of lista">
+      <td>{{ c.id }}</td>
+      <td>{{ c.nombre }}</td>
+      <td>
+        <a routerLink="/productos/editar-categoria/{{ c.id }} " class="btn">Editar</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

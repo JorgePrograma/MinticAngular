@@ -1,12 +1,23 @@
 .container {
-  background: #ccc;
   resize: both;
   overflow: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  box-shadow: black;
 }
 
 @media screen and (min-width: 480px) {
-  .container {
+  .example-card {
     min-height: 480px;
     height: auto;
   }
+}
+.example-card {
+  resize: both;
+  overflow: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  box-shadow: black;
 }
