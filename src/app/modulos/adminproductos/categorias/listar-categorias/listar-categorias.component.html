@@ -1,21 +1,40 @@
+<p>Lista de marcas de carros</p>
+<!---Modal crear nueva categoria-->
+<button class="btn" mat-raised-button (click)="addEditCategoria()">
+  Nuevo producto
+</button>
 
-<p>listar-categorias works!</p>
-<u class="btn" routerLink="/productos/crear-categoria">Nuevo producto</u>
-<table class="table tresponsive brown">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Nombre</th>
-      <th>opciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let c of lista">
-      <td>{{ c.id }}</td>
-      <td>{{ c.nombre }}</td>
-      <td>
-        <a routerLink="/productos/editar-categoria/{{ c.id }} " class="btn">Editar</a>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID.</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+      <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="material-icons">edit</span>
+        <span class="material-icons">delete</span>
       </td>
-    </tr>
-  </tbody>
-</table>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+</div>

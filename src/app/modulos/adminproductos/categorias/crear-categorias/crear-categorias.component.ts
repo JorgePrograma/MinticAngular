@@ -1,3 +1,4 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
@@ -15,6 +16,7 @@ export class CrearCategoriasComponent implements OnInit {
   });
 
   constructor(
+    public dialogRef: DialogRef<CrearCategoriasComponent>,
     private fb: FormBuilder,
     private servicioCategoria: CategoriaService,
     private router: Router
@@ -29,11 +31,14 @@ export class CrearCategoriasComponent implements OnInit {
     this.servicioCategoria.setAdd(datos).subscribe(
       (datos: ModeloCategoria) => {
         alert('Categoria agregada con exito');
-        this.router.navigate(['/productos/listar-categorias']);
       },
       (error: any) => {
         alert('error al guardar categoria');
       }
     );
+  }
+
+  cancelar() {
+    this.dialogRef.close();
   }
 }

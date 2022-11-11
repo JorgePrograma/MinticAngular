@@ -1,20 +1,13 @@
-<div class="row">
-  <h3 class="center">Crear productos</h3>
-  <article class="offset-s3col s6">
-    <form [formGroup]="fgValidador" (ngSubmit)="setGuardarcategoria()">
-      <div class="input-field">
-        <label for="nombre" class="active">Nombre</label>
-        <input formControlName="nombre" type="text" name="nombre" id="nombre" />
-      </div>
-      <p class="center-align">
-        <button
-          [disabled]="!fgValidador.valid"
-          class="waves-effect waves-light btn"
-          type="submit"
-        >
-          <i class="material.icons right">Enviar</i>
-        </button>
-      </p>
-    </form>
-  </article>
-</div>
+<h1 mat-dialog-title>Agregar Categoria de marca</h1>
+<form [formGroup]="fgValidador" (ngSubmit)="setGuardarcategoria()">
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <label for="nombre">Nombre</label>
+      <input type="text" formControlName="nombre" id="nombre" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button  [disabled]="!fgValidador.valid" class="waves-effect waves-light btn" type="submit">Aceptar</button>
+  </div>
+</form>

@@ -14,12 +14,9 @@ import { EliminarCategoriasComponent } from './categorias/eliminar-categorias/el
 import { EditarCategoriasComponent } from './categorias/editar-categorias/editar-categorias.component';
 import { CrearCategoriasComponent } from './categorias/crear-categorias/crear-categorias.component';
 import { ListarCategoriasComponent } from './categorias/listar-categorias/listar-categorias.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 // add libraries de angular components
-
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,9 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AdminproductosRoutingModule,
-    MatTableModule,
-    MatPaginatorModule,
-    FormsModule,ReactiveFormsModule
+    SharedModule
   ],
 })
 export class AdminproductosModule {}

@@ -1,1 +1,13 @@
-<p>eliminar-categorias works!</p>
+<h1 mat-dialog-title>Agregar Categoria de marca</h1>
+<form [formGroup]="fgValidador" (ngSubmit)="setGuardarcategoria()">
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <label for="nombre">Nombre</label>
+      <input type="text" formControlName="nombre" id="nombre" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button  [disabled]="!fgValidador.valid" class="waves-effect waves-light btn" type="submit">Aceptar</button>
+  </div>
+</form>
