@@ -1,0 +1,10 @@
+mat-form-field{
+  width: 100%;
+}
+
+.flex{
+  display: flex;
+}
+mat-spinner{
+  margin-left: 10px;
+}

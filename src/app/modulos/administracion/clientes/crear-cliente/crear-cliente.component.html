@@ -1,1 +1,66 @@
-<p>crear-cliente works!</p>
+<div class="container">
+  <h2 mat-dialog-title>{{ clase }} cliente</h2>
+</div>
+<form [formGroup]="fgValidador" (ngSubmit)="setGuardar()">
+  <div>
+    <div class="column-2">
+      <div *ngIf="clase=='Editar'" class="column card">
+        <label>ID</label>
+        <input formControlName="id" placeholder="campo" matInput autocomplete="off" />
+      </div>
+      <div class="column card">
+        <label>Cedula</label>
+        <input formControlName="cedula" placeholder="campo" matInput autocomplete="off" />
+      </div>
+    </div>
+
+    <div class="column-2">
+      <div class="column card">
+        <label>Nombre</label>
+        <input formControlName="nombre" placeholder="campo" matInput autocomplete="off" />
+      </div>
+      <div class="column card">
+        <label>Apellido</label>
+        <input formControlName="apellido" placeholder="campo" matInput autocomplete="off" />
+      </div>
+    </div>
+
+    <div class="column-2">
+      <div class="column card">
+        <label>Telefono</label>
+        <input formControlName="telefono" placeholder="campo" matInput autocomplete="off" />
+      </div>
+      <div class="column card">
+        <label>Correo</label>
+        <input formControlName="correo" placeholder="campo" matInput autocomplete="off" />
+      </div>
+    </div>
+
+    <div class="column-2">
+      <div class="column card">
+        <label>Direccion</label>
+        <input formControlName="direccion" placeholder="campo" matInput autocomplete="off" />
+      </div>
+      <div class="column card">
+        <label>Fecha nacimiento</label>
+        <input formControlName="fecha_nacimiento" placeholder="campo" matInput autocomplete="off" />
+      </div>
+    </div>
+
+    <div class="column-2">
+      <div class="column card">
+        <label>Edad</label>
+        <input formControlName="edad" placeholder="campo" matInput autocomplete="off" />
+      </div>
+      <div *ngIf="clase=='Editar'" class="column card">
+        <label>Clave</label>
+        <input formControlName="clave" type="password" placeholder="campo" matInput autocomplete="off" />
+      </div>
+    </div>
+  </div>
+
+  <div class="button-center">
+    <button type="button" routerLink="/administracion/listar-clientes" mat-button>Cancelar</button>
+    <button type="submit"[disabled]="!fgValidador.valid" mat-button cdkFocusInitial>Aceptar</button>
+  </div>
+</form>

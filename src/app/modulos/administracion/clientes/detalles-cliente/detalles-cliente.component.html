@@ -1,0 +1,24 @@
+<div>
+  <h1 mat-dialog-title>Detalles</h1>
+</div>
+<div mat-dialog-content>
+  <div>
+    <p><span> ID: </span> {{ id }}</p>
+    <p><span> Nombre: </span> {{ nombre }}</p>
+    <p><span> Cedula: </span> {{ cedula }}</p>
+    <p><span> Fecha de Nacimiento: </span> {{ fecha_nacimiento }}</p>
+    <p><span> Edad: </span> {{ edad }}</p>
+    <p><span> Correo: </span> {{ correo }}</p>
+    <p><span> Telefono: </span> {{ telefono }}</p>
+    <p><span> Direccion: </span> {{ direccion }}</p>
+    <div>
+      <h5>Datos de su cuenta</h5>
+      <p><span>Usuario: </span>{{ correo }}</p>
+      <p><span>Clave: </span>{{ clave }}</p>
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button class="waves-effect waves-light btn">Aceptar</button>
+  </div>
+</div>

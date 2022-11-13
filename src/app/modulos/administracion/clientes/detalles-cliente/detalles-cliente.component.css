@@ -1,0 +1,11 @@
+span {
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
+}
+h5{
+  font-size: 17px;
+  color: rgb(36, 36, 232);
+  padding: 1px;
+}

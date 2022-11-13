@@ -1,13 +1,16 @@
-<h1 mat-dialog-title>Agregar Categoria de marca</h1>
-<form [formGroup]="fgValidador" (ngSubmit)="setGuardarcategoria()">
-  <div mat-dialog-content>
+<div class="container-eliminar">
+  <div class="flex">
+    <h3 >Se eliminara la categoria</h3>
+    <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+  </div>
+  <form [formGroup]="fgValidador" (ngSubmit)="setDelete()">
+    <input type="hidden" formControlName="id" />
     <mat-form-field appearance="fill">
-      <label for="nombre">Nombre</label>
-      <input type="text" formControlName="nombre" id="nombre" />
+      <p>¿ esta seguro de seguir con la eliminacion ?</p>
     </mat-form-field>
-  </div>
-  <div mat-dialog-actions align="end">
-    <button mat-button (click)="cancelar()">Cancelar</button>
-    <button  [disabled]="!fgValidador.valid" class="waves-effect waves-light btn" type="submit">Aceptar</button>
-  </div>
-</form>
+    <div  class="center">
+      <button mat-button (click)="cancelar()">No</button>
+      <button [disabled]="!fgValidador.valid" mat-button cdkFocusInitial type="submit">Si</button>
+    </div>
+  </form>
+</div>

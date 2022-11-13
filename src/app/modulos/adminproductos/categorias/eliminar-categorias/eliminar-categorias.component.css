@@ -1,7 +1,22 @@
-mat-form-field{
+div{
+  text-align: center;
+}
+h1{
   width: 100%;
 }
-label{
-  font-size: 20px;
-  color: #171717;
+mat-form-field{
+  width: 100%;
+  justify-content: center;
+}
+.btn{
+  display: flex;
+  justify-items: center;
+}
+
+
+.flex{
+  display: flex;
+}
+mat-spinner{
+  margin-left: 10px;
 }

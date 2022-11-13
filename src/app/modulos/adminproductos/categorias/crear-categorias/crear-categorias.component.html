@@ -1,7 +1,15 @@
-<h1 mat-dialog-title>Agregar Categoria de marca</h1>
+<div class="flex">
+  <h1 mat-dialog-title>{{ clase }} Categoria de marca</h1>
+  <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+</div>
+
 <form [formGroup]="fgValidador" (ngSubmit)="setGuardarcategoria()">
   <div mat-dialog-content>
-    <mat-form-field appearance="fill">
+    <mat-form-field *ngIf="clase=='Editar'" MatFormFieldControl appearance="fill">
+      <label for="id">Id</label>
+      <input type="text" formControlName="id" id="id" />
+    </mat-form-field>
+    <mat-form-field MatFormFieldControl appearance="fill">
       <label for="nombre">Nombre</label>
       <input type="text" formControlName="nombre" id="nombre" />
     </mat-form-field>

@@ -1,15 +1,65 @@
-import { Component, OnInit } from '@angular/core';
+import { DialogRef } from '@angular/cdk/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { ModeloClientes } from 'src/app/modelos/cliente.modelo';
+import { ClienteService } from 'src/app/servicios/cliente.service';
 
 @Component({
   selector: 'app-eliminar-cliente',
   templateUrl: './eliminar-cliente.component.html',
-  styleUrls: ['./eliminar-cliente.component.css']
+  styleUrls: ['./eliminar-cliente.component.css'],
 })
 export class EliminarClienteComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  // variables locales
+  id_modal: string;
+  loading: boolean = false;
+  fgValidador: FormGroup = this.fb.group({
+    id: ['', [Validators.required]],
+  });
+  constructor(
+    public dialogRef: DialogRef<EliminarClienteComponent>, // para mostrar modales
+    private servicioCliente: ClienteService,
+    private fb: FormBuilder, // formulario
+    private _snackBar: MatSnackBar, // para mostrar mensajes
+    private router: Router,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.id_modal = data.id;
+    this.GetBuscar(this.id_modal);
   }
 
+  ngOnInit(): void {}
+
+  setDelete() {
+    this.loading = true;
+    let codigo = this.fgValidador.controls['id'].value;
+    this.servicioCliente.setDelete(codigo).subscribe(
+      (datos: ModeloClientes) => {
+        this.cancelar();
+        this.mensajeExito();
+      },
+      (error: any) => {}
+    );
+  }
+
+  // buscar el dato en el backend y mostrarlo en el frontend
+  GetBuscar(id: string) {
+    this.servicioCliente.getListarId(id).subscribe((datos: ModeloClientes) => {
+      this.fgValidador.controls['id'].setValue(datos.id);
+    });
+  }
+
+  mensajeExito() {
+    this._snackBar.open(`El cliente se elimino con exito`, '', {
+      duration: 2000,
+    });
+    this.router.navigate(['/administracion/listar-clientes']);
+  }
+
+  cancelar() {
+    this.dialogRef.close();
+  }
 }

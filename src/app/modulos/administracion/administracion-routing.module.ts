@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BuscarClienteComponent } from './clientes/buscar-cliente/buscar-cliente.component';
 import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.component';
-import { EditarClienteComponent } from './clientes/editar-cliente/editar-cliente.component';
 import { EliminarClienteComponent } from './clientes/eliminar-cliente/eliminar-cliente.component';
+import { ListarClienteComponent } from './clientes/listar-cliente/listar-cliente.component';
 import { CrearDirectivoComponent } from './directivos/crear-directivo/crear-directivo.component';
 import { EditarDirectivoComponent } from './directivos/editar-directivo/editar-directivo.component';
 import { EliminarDirectivoComponent } from './directivos/eliminar-directivo/eliminar-directivo.component';
@@ -18,14 +17,14 @@ const routes: Routes = [
     path: 'crear-cliente',
     component: CrearClienteComponent,
   },{
-    path: 'editar-cliente',
-    component: EditarClienteComponent,
+    path: 'editar-cliente/:id',
+    component: CrearClienteComponent,
   },{
     path: 'eliminar-cliente',
     component: EliminarClienteComponent,
   },{
     path: 'listar-clientes',
-    component: BuscarClienteComponent,
+    component: ListarClienteComponent,
   },
 
   // rutas de empleados
@@ -34,8 +33,8 @@ const routes: Routes = [
     component: CrearEmpleadosComponent,
   },
   {
-    path: 'editar-empleado',
-    component: EditarEmpleadosComponent,
+    path: 'editar-empleado/:id',
+    component: CrearClienteComponent,
   },
   {
     path: 'eliminar-empleado',

@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 @NgModule({
   declarations: [],
   imports: [
@@ -37,6 +39,8 @@ import { MatListModule } from '@angular/material/list';
     ReactiveFormsModule,
     MatDialogModule,
     MatListModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   exports: [
     MatSliderModule,
@@ -55,6 +59,8 @@ import { MatListModule } from '@angular/material/list';
     ReactiveFormsModule,
     MatDialogModule,
     MatListModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
 })
 export class SharedModule {}

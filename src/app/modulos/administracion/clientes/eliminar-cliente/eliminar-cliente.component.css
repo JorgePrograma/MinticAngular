@@ -1,0 +1,12 @@
+.container-eliminar
+{
+  text-align: center;
+  text-justify: inter-word;
+}
+
+.flex{
+  display: flex;
+}
+mat-spinner{
+  margin-left: 10px;
+}

@@ -1,1 +1,16 @@
-<p>eliminar-cliente works!</p>
+<div class="container-eliminar">
+  <div class="flex">
+    <h3 >Se eliminara el cliente</h3>
+    <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+  </div>
+  <form [formGroup]="fgValidador" (ngSubmit)="setDelete()">
+    <input type="hidden" formControlName="id" />
+    <mat-form-field appearance="fill">
+      <p>¿ esta seguro de seguir con la eliminacion ?</p>
+    </mat-form-field>
+    <div  class="center">
+      <button mat-button (click)="cancelar()">No</button>
+      <button [disabled]="!fgValidador.valid" mat-button cdkFocusInitial type="submit">Si</button>
+    </div>
+  </form>
+</div>
