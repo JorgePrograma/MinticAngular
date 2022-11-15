@@ -11,7 +11,9 @@ export class SeguridadService {
   datosUsuarioSesion = new BehaviorSubject<ModeloIdentificar>(
     new ModeloIdentificar()
   );
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.VerificarSesion();
+  }
 
   Identificar(usuario: string, clave: string): Observable<ModeloIdentificar> {
     return this.http.post<ModeloIdentificar>(
@@ -24,6 +26,7 @@ export class SeguridadService {
     );
   }
 
+  // almacenamiento en el localstora que es la base de datos
   AlmacenarSesion(datos: ModeloIdentificar) {
     datos.estaIdentificado = true;
     let stringdatos = JSON.stringify(datos);
@@ -71,8 +74,8 @@ export class SeguridadService {
     if (datoString) {
       let datos = JSON.parse(datoString);
       return datos.tk;
-    }else{
-      return ''
+    } else {
+      return '';
     }
   }
 }

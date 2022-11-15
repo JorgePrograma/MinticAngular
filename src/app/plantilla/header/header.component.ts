@@ -10,13 +10,15 @@ import { SeguridadService } from 'src/app/servicios/seguridad.service';
 })
 export class HeaderComponent implements OnInit {
   seInicioSesion: boolean = false;
+
   subs: Subscription = new Subscription();
+
   constructor(private SeguridadServicio: SeguridadService) {}
 
   ngOnInit(): void {
     this.subs = this.SeguridadServicio.ObtenerDatosUsuarioEnSesion().subscribe(
       (datos: ModeloIdentificar) => {
-        this.seInicioSesion = datos.estaIdentificado;
+      this.seInicioSesion = datos.estaIdentificado;
       }
     );
   }

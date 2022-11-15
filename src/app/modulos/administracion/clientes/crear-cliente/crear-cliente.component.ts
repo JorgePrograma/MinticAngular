@@ -11,6 +11,7 @@ import { ClienteService } from 'src/app/servicios/cliente.service';
   templateUrl: './crear-cliente.component.html',
   styleUrls: ['./crear-cliente.component.css'],
 })
+
 export class CrearClienteComponent implements OnInit {
   fgValidador: FormGroup = this.fb.group({
     id: ['', []],
@@ -27,12 +28,12 @@ export class CrearClienteComponent implements OnInit {
   });
 
   // variables locales
-  clase = 'Registrado';
+  clase = 'Registrar';
   loading: boolean = false;
   id: string = '';
   constructor(
     private fb: FormBuilder, // formulario
-    private servicioCategoria: ClienteService,
+    private servicioCliente: ClienteService,
     private _snackBar: MatSnackBar, // para mostrar mensajes
     private router: Router,
     private route: ActivatedRoute
@@ -45,7 +46,7 @@ export class CrearClienteComponent implements OnInit {
 
   setGuardar() {
     this.loading = true;
-    if (this.clase == 'Registrado') {
+    if (this.clase == 'Registrar') {
       this.setAdd();
     } else {
       this.setUpdate();
@@ -54,14 +55,17 @@ export class CrearClienteComponent implements OnInit {
 
   // agregar
   setAdd() {
+    let id = this.fgValidador.controls['id'].value;
     let nombre = this.fgValidador.controls['nombre'].value;
     let apellido = this.fgValidador.controls['apellido'].value;
     let cedula = this.fgValidador.controls['cedula'].value;
     let telefono = this.fgValidador.controls['telefono'].value;
     let correo = this.fgValidador.controls['correo'].value;
     let direccion = this.fgValidador.controls['direccion'].value;
+    let edad = this.fgValidador.controls['edad'].value;
     let fecha_nacimiento = this.fgValidador.controls['fecha_nacimiento'].value;
     let empresaId = 'jsjsjdjdhdhfggs';
+
     let datos = new ModeloClientes();
     datos.nombre = nombre;
     datos.apellido = apellido;
@@ -71,8 +75,11 @@ export class CrearClienteComponent implements OnInit {
     datos.direccion = direccion;
     datos.fecha_nacimiento = fecha_nacimiento;
     datos.empresaId = empresaId;
+    datos.id = id;
+    datos.edad = edad;
 
-    this.servicioCategoria.setAdd(datos).subscribe(
+console.log(datos)
+    this.servicioCliente.setAdd(datos).subscribe(
       (datos: ModeloClientes) => {
         this.mensajeExito('registrado');
       },
@@ -107,7 +114,7 @@ export class CrearClienteComponent implements OnInit {
     datos.fecha_nacimiento = fecha_nacimiento;
     datos.clave = clave;
 
-    this.servicioCategoria.setUpdate(datos).subscribe(
+    this.servicioCliente.setUpdate(datos).subscribe(
       (datos: ModeloClientes) => {
         this.mensajeExito('actualizada');
       },
@@ -125,7 +132,7 @@ export class CrearClienteComponent implements OnInit {
 
   // buscar el dato en el backend y mostrarlo en el frontend
   GetBuscar(id: string) {
-    this.servicioCategoria
+    this.servicioCliente
       .getListarId(id)
       .subscribe((datos: ModeloClientes) => {
         this.fgValidador.controls['id'].setValue(datos.id);

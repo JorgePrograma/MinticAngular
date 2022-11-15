@@ -1,14 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ModeloClientes } from '../modelos/cliente.modelo';
+import { ModeloVehiculo } from '../modelos/vehiculo.modelo';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
-
+export class VehiculoService {
   url = 'http://localhost:3000';
   token: string = '';
 
@@ -24,20 +23,20 @@ export class ClienteService {
   // metodos del crud
 
   // obtener todos los registros
-  getListar(): Observable<ModeloClientes[]> {
-    return this.http.get<ModeloClientes[]>(`${this.url}/clientes`);
+  getListar(): Observable<ModeloVehiculo[]> {
+    return this.http.get<ModeloVehiculo[]>(`${this.url}/vehiculos`);
   }
 
   // obtener todos los registros por id
-  getListarId(id: string): Observable<ModeloClientes> {
-    return this.http.get<ModeloClientes>(`${this.url}/clientes/${id}`);
+  getListarId(id: string): Observable<ModeloVehiculo> {
+    return this.http.get<ModeloVehiculo>(`${this.url}/vehiculos/${id}`);
   }
 
-  // agregar una nuevo cliente
-  setAdd(cliente: ModeloClientes): Observable<ModeloClientes> {
-    return this.http.post<ModeloClientes>(
-      `${this.url}/clientes`,
-      cliente,
+  // agregar una nuevo vehiculo
+  setAdd(vehiculo: ModeloVehiculo): Observable<ModeloVehiculo> {
+    return this.http.post<ModeloVehiculo>(
+      `${this.url}/vehiculos`,
+      vehiculo,
       {
         headers: new HttpHeaders({
           Authorizacion: `Bearer ${this.token}`,
@@ -46,11 +45,11 @@ export class ClienteService {
     );
   }
 
-  // editar un cliente
-  setUpdate(cliente: ModeloClientes): Observable<ModeloClientes> {
-    return this.http.patch<ModeloClientes>(
-      `${this.url}/clientes/${cliente.id}`,
-      cliente,
+  // editar un vehiculo
+  setUpdate(vehiculo: ModeloVehiculo): Observable<ModeloVehiculo> {
+    return this.http.patch<ModeloVehiculo>(
+      `${this.url}/vehiculos/${vehiculo.id}`,
+      vehiculo,
       {
         headers: new HttpHeaders({
           Authorizacion: `Bearer ${this.token}`,
@@ -59,12 +58,13 @@ export class ClienteService {
     );
   }
 
-  // eliminar cliente
+  // eliminar vehiculo
   setDelete(id: string): Observable<any> {
-    return this.http.delete(`${this.url}/clientes/${id}`, {
+    return this.http.delete(`${this.url}/vehiculos/${id}`, {
       headers: new HttpHeaders({
         Authorizacion: `Bearer ${this.token}`,
       }),
     });
   }
+  
 }

@@ -17,8 +17,8 @@ const routes: Routes = [
     component: CrearVehiculosComponent,
   },
   {
-    path: 'editar-vehiculo',
-    component: EditarVehiculosComponent,
+    path: 'editar-vehiculo/:id',
+    component: CrearVehiculosComponent,
   },
   {
     path: 'eliminar-vehiculo',
