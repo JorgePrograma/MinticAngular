@@ -18,9 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [],
   imports: [
@@ -43,7 +43,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatListModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatAutocompleteModule,
   ],
   exports: [
     MatSliderModule,
@@ -64,7 +65,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatListModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatAutocompleteModule,
   ],
 })
 export class SharedModule {}

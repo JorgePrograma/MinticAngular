@@ -12,4 +12,8 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  myImagenCorrectivo:string = 'assets/imagenes/correctivo.jpeg'
+  myImagenPreventivo:string = 'assets/imagenes/preventivo.jpeg'
+  myImagenPredictivo:string = 'assets/imagenes/predictivos.jpeg'
+
 }

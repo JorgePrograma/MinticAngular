@@ -1,6 +1,6 @@
-<p>Lista de marcas de carros</p>
+<h3>Lista de marcas de carros</h3>
 <!---Modal crear nueva categoria-->
-<button class="btn" mat-raised-button (click)="addEditCategoria()">
+<button class="btn nuevo" mat-raised-button (click)="addEditCategoria()">
   Nuevo producto
 </button>
 
@@ -22,8 +22,8 @@
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let element">
-        <span (click)="addEditCategoria(element.id)" class="material-icons">edit</span>
-        <span (click)="addDeleteModals(element.id)" class="material-icons">delete</span>
+        <span (click)="addEditCategoria(element.id)" class="material-icons edit">edit</span>
+        <span (click)="addDeleteModals(element.id)" class="material-icons delete">delete</span>
       </td>
     </ng-container>
 

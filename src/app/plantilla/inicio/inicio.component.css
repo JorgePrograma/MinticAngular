@@ -1,3 +1,58 @@
-.container{
-  
+img {
+  width: 100%;
+  height: 80%;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.container-inicio {
+  margin: 10px 20px;
+}
+
+p {
+  text-align: center;
+  margin: 10px;
+  font-style: oblique;
+  font-size: 20px;
+}
+
+.flex-row {
+  display: contents;
+}
+
+.detalles {
+  padding: 0px 20px;
+}
+
+.detalles ul {
+  margin: 10px;
+}
+
+.detalles ul li {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.detalles p {
+  justify-content: left;
+  font-size: 16px;
+}
+.margin {
+  margin: 0px 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.title h4 {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 900;
+}
+.content {
+  display: inline-block;
+}
+
+h2{
+  text-align: center;
 }

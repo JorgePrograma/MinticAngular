@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map, Observable, startWith } from 'rxjs';
 import { ModeloCategoria } from 'src/app/modelos/categoria.modelo';
 import { ModeloClientes } from 'src/app/modelos/cliente.modelo';
 import { ModeloVehiculo } from 'src/app/modelos/vehiculo.modelo';
@@ -15,9 +21,11 @@ import { VehiculoService } from 'src/app/servicios/vehiculo.service';
   styleUrls: ['./crear-vehiculos.component.css'],
 })
 export class CrearVehiculosComponent implements OnInit {
-  tipoDocumento: ModeloClientes[] = [];
+  listaClientes: ModeloClientes[] = [];
   listaCategoria: ModeloCategoria[] = [];
+  listaEstados: string[] = ['Reparacion', 'Revision', 'Mantenimiento'];
 
+  // validador de campos del formulario
   fgValidador: FormGroup = this.fb.group({
     id: ['', []],
     color: ['', [Validators.required]],
@@ -26,12 +34,15 @@ export class CrearVehiculosComponent implements OnInit {
     estado: ['', [Validators.required]],
     placa: ['', [Validators.required]],
     servicioId: ['', []],
+    categoriaMarcaId: [null, Validators.required],
+    clienteId: [null, Validators.required],
   });
 
   // variables locales
   clase = 'Registrar';
   loading: boolean = false;
   id: string = '';
+
   constructor(
     private fb: FormBuilder, // formulario
     private servicioVehiculo: VehiculoService,
@@ -46,7 +57,7 @@ export class CrearVehiculosComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.esEditar(this.id);
     this.getListarClientes();
-    this.getListarCategorias()
+    this.getListarCategorias();
   }
 
   setGuardar() {
@@ -66,17 +77,27 @@ export class CrearVehiculosComponent implements OnInit {
     let estado = this.fgValidador.controls['estado'].value;
     let placa = this.fgValidador.controls['placa'].value;
     let servicioId = this.fgValidador.controls['servicioId'].value;
+
+    // captura nuevos
+    let clienteId = this.fgValidador.controls['clienteId'].value;
+    let categoriaMarcaId = this.fgValidador.controls['categoriaMarcaId'].value;
     let datos = new ModeloVehiculo();
+
     datos.color = color;
     datos.modelo = modelo;
     datos.serie_motor = serie_motor;
     datos.estado = estado;
     datos.placa = placa;
+
+    // campos nuevos
+    datos.clienteId = clienteId;
+    datos.categoriaMarcaId = categoriaMarcaId;
     datos.servicioId = servicioId;
 
     this.servicioVehiculo.setAdd(datos).subscribe(
       (datos: ModeloVehiculo) => {
         this.mensajeExito('registrado');
+        console.log('mensaje', datos);
       },
       (error: any) => {}
     );
@@ -91,6 +112,8 @@ export class CrearVehiculosComponent implements OnInit {
     let placa = this.fgValidador.controls['placa'].value;
     let servicioId = this.fgValidador.controls['servicioId'].value;
     let codigo = this.fgValidador.controls['id'].value;
+    let clienteId = this.fgValidador.controls['clienteId'].value;
+    let categoriaMarcaId = this.fgValidador.controls['categoriaMarcaId'].value;
 
     let datos = new ModeloVehiculo();
     datos.id = codigo;
@@ -100,6 +123,8 @@ export class CrearVehiculosComponent implements OnInit {
     datos.estado = estado;
     datos.placa = placa;
     datos.servicioId = servicioId;
+    datos.clienteId = clienteId;
+    datos.categoriaMarcaId = categoriaMarcaId;
 
     this.servicioVehiculo.setUpdate(datos).subscribe(
       (datos: ModeloVehiculo) => {
@@ -129,16 +154,16 @@ export class CrearVehiculosComponent implements OnInit {
       this.fgValidador.controls['estado'].setValue(datos.estado);
       this.fgValidador.controls['placa'].setValue(datos.placa);
       this.fgValidador.controls['servicioId'].setValue(datos.servicioId);
+      this.fgValidador.controls['clienteId'].setValue(datos.clienteId);
       this.fgValidador.controls['categoriaMarcaId'].setValue(
         datos.categoriaMarcaId
       );
-
     });
   }
 
   getListarClientes() {
     this.clienteServicio.getListar().subscribe((datos: ModeloClientes[]) => {
-      this.tipoDocumento = datos;
+      this.listaClientes = datos;
     });
   }
 
@@ -148,11 +173,11 @@ export class CrearVehiculosComponent implements OnInit {
     });
   }
 
-
   mensajeExito(estado_operacion: string) {
     this._snackBar.open(`El vehiculo fue ${estado_operacion} con exito`, '', {
       duration: 2000,
     });
     this.router.navigate(['/productos/listar-vehiculos']);
   }
+
 }

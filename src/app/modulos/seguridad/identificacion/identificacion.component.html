@@ -1,16 +1,22 @@
-<p>identificacion works!</p>
-<div>
-  <form [formGroup]="fgValidador" (ngSubmit)="IdentificarUsuario()">
-    <div>
-      <div>
-        <label for="usuario">Usuario</label>
-        <input type="email" id="usuario" formControlName="usuario">
+<div class="container-login">
+  <h3>Login</h3>
+  <div class="card">
+    <form [formGroup]="fgValidador" (ngSubmit)="IdentificarUsuario()">
+      <div class="form-control-content">
+        <div class="form-control">
+          <label for="usuario">Usuario</label>
+          <input type="email" id="usuario" formControlName="usuario" />
+        </div>
+        <div class="form-control">
+          <label for="clave">Password</label>
+          <input type="password" id="clave" formControlName="clave" />
+        </div>
+        <div class="center">
+          <button class="aceptar2" [disabled]="!fgValidador.valid" type="submit">
+            Aceptar
+          </button>
+        </div>
       </div>
-      <div>
-        <label for="clave">Password</label>
-        <input type="password" id="clave" formControlName="clave">
-      </div>
-    </div>
-    <button [disabled]="!fgValidador.valid" type="submit">Agregar</button>
-  </form>
+    </form>
+  </div>
 </div>

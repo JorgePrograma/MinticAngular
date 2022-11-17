@@ -1,109 +1,105 @@
-<div class="container">
-  <h2 mat-dialog-title>{{ clase }} cliente</h2>
+<div class="flex">
+  <h3>{{ clase }} vehiculo</h3>
   <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
 </div>
 <form [formGroup]="fgValidador" (ngSubmit)="setGuardar()">
   <div>
     <div class="column-2">
-      <div *ngIf="clase == 'Editar'" class="column card">
+      <div *ngIf="clase == 'Editar'" class="column card padding-left">
         <label>Id</label>
-        <input
-          formControlName="id"
-          placeholder="campo"
-          matInput
-          autocomplete="off"
-        />
+        <input placeholder="Ingrese id " formControlName="id" matInput autocomplete="off" />
       </div>
-      <div class="column card">
+      <div class="column card padding-left">
         <label>Color</label>
-        <input
-          formControlName="color"
-          placeholder="campo"
-          matInput
-          autocomplete="off"
-        />
+        <input placeholder="Ingrese color " formControlName="color" matInput autocomplete="off" />
       </div>
     </div>
 
     <div class="column-2">
-      <div class="column card">
+      <div class="column card padding-left">
         <label>Modelo</label>
-        <input
-          formControlName="modelo"
-          placeholder="campo"
-          matInput
-          autocomplete="off"
-        />
+        <input placeholder="Ingrese modelo " formControlName="modelo" matInput autocomplete="off" />
       </div>
-      <div class="column card">
+      <div class="column card padding-left">
         <label>Serie_motor</label>
-        <input
-          formControlName="serie_motor"
-          placeholder="campo"
-          matInput
-          autocomplete="off"
-        />
+        <input placeholder="Ingrese serie_motor " formControlName="serie_motor" matInput autocomplete="off" />
       </div>
     </div>
 
     <div class="column-2">
-      <div class="column card">
+      <div class="column card padding-left">
         <label>Estado</label>
-        <input
-          formControlName="estado"
-          placeholder="campo"
-          matInput
-          autocomplete="off"
-        />
+        <mat-select formControlName="estado" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let dato of listaEstados" [value]="dato">
+            <span >{{ dato }}</span>
+          </mat-option>
+        </mat-select>
       </div>
-      <div class="column card">
+
+      <div class=" card padding-left">
         <label>Placa</label>
-        <input
-          formControlName="placa"
-          placeholder="campo"
-          matInput
-          autocomplete="off"
-        />
+        <input placeholder="Ingrese placa " formControlName="placa" matInput autocomplete="off" />
       </div>
     </div>
 
     <div class="column-2">
-      <div class="column card">
+      <div class="column card padding-left">
         <label>servicioId</label>
-        <input
-          formControlName="servicioId"
-          placeholder="campo"
-          matInput
-          autocomplete="off"
-        />
+        <input placeholder="Ingrese servicioId " formControlName="servicioId" matInput autocomplete="off" />
       </div>
-      <div class="column card">
-        <mat-label>Cliente</mat-label>
-        <mat-select formControlName="clienteId">
-          <mat-option *ngFor="let item of tipoDocumento" [value]="item.id">
-            <span *ngIf="item.id == 'clienteId'"></span>{{ item.nombre }}
-          </mat-option>
-        </mat-select>
+
+      <!-- campo lista de  marcas del vehiculo -->
+      <div class="column card padding-left">
+        <label>Marca ID</label>
+        <input placeholder="Ingrese Marca"   type="text"
+        matInput
+        formControlName="categoriaMarcaId"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let categoria of listaCategoria"
+          [value]="categoria.nombre"
+        >
+          {{ categoria.nombre }}
+        </mat-option>
+      </mat-autocomplete>
       </div>
     </div>
 
+    <!-- campo lista de clientes disponibles para vehiculo -->
     <div class="column-2">
-      <div class="column card">
-        <mat-label>Categoria</mat-label>
-        <mat-select formControlName="clienteId">
-          <mat-option *ngFor="let categoria of listaCategoria" [value]="categoria.id">
-            <span *ngIf="categoria.id == 'clienteId'"></span>{{ categoria.nombre }}
-          </mat-option>
-        </mat-select>
+      <div class="column card padding-left">
+        <label>Cliente</label>
+        <input placeholder="seleccione Cliente " type="text"
+           matInput
+           formControlName="clienteId"
+           required
+           [matAutocomplete]="autoGroup">
+      <mat-autocomplete #autoGroup="matAutocomplete">
+        <mat-option
+        *ngFor="let cliente of listaClientes"
+        [value]="cliente.nombre"
+      >
+        {{ cliente.nombre }}
+      </mat-option>
+
+      </mat-autocomplete>
       </div>
     </div>
-
   </div>
   <div class="button-center">
-    <button type="button" routerLink="/productos/listar-vehiculos" mat-button>
+    <button
+      class="btn-cancelar"
+      type="button"
+      routerLink="/productos/listar-vehiculos"
+      mat-button
+    >
       Cancelar
     </button>
     <button
+      class="btn-aceptar"
       type="submit"
       [disabled]="!fgValidador.valid"
       mat-button

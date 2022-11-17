@@ -1,0 +1,19 @@
+h3{
+  font-weight: 600;
+  text-align: left;
+}
+
+.column {
+  flex: 50%;
+  margin: 0px 5px;
+  padding: 10px;
+}
+.column-2 {
+  columns: 2;
+  margin: 10px 20px;
+}
+
+mat-select{
+  margin: 10px 0px;
+
+}

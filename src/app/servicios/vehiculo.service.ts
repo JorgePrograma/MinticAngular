@@ -39,10 +39,10 @@ export class VehiculoService {
       vehiculo,
       {
         headers: new HttpHeaders({
-          Authorizacion: `Bearer ${this.token}`,
-        }),
+          Authorizacion: `Bearer ${this.token}`
+        })
       }
-    );
+    )
   }
 
   // editar un vehiculo
@@ -66,5 +66,5 @@ export class VehiculoService {
       }),
     });
   }
-  
+
 }

@@ -47,7 +47,7 @@ export class ListarClienteComponent implements OnInit {
   getListarClientes() {
     this.clienteServicio.getListar().subscribe((datos: ModeloClientes[]) => {
       this.dataSource.data = datos;
-
+      console.log(datos);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });

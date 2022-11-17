@@ -1,8 +1,8 @@
-<p>Lista de todos los clientes</p>
+<h3>Lista de todos los clientes</h3>
 <!---Modal crear nueva categoria-->
 
-<a class="btn flow-text" routerLink="/administracion/crear-cliente">
-  <span class="material-icons">personadd</span>Nuevo cliente
+<a class="btn flow-text nuevo" routerLink="/administracion/crear-cliente">
+  <span class="material-icons ">personadd</span>Nuevo cliente
 </a>
 
 <div class="mat-elevation-z8">
@@ -34,10 +34,10 @@
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let element">
-        <a routerLink="/administracion/editar-cliente/{{ element.id }}"><span class="material-icons">edit</span></a>
-        <span (click)="DeteleModals(element.id)" class="material-icons"
+        <a routerLink="/administracion/editar-cliente/{{ element.id }}"><span class="material-icons edit">edit</span></a>
+        <span (click)="DeteleModals(element.id)" class="material-icons delete"
           >delete</span>
-        <span (click)="DetallesModals(element.id)" class="material-icons">info</span
+        <span (click)="DetallesModals(element.id)" class="material-icons details">info</span
         >
       </td>
     </ng-container>

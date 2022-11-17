@@ -4,11 +4,10 @@
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px 10px;
-  box-shadow: black;
 }
 
 @media screen and (min-width: 480px) {
-  .example-card {
+  .screen {
     min-height: 480px;
     height: auto;
   }
@@ -19,5 +18,43 @@
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px 10px;
-  box-shadow: black;
+}
+
+
+/* estilos generales */
+/* clase para botones*/
+
+.btn-aceptar {
+  background: rgb(78, 170, 78);
+}
+
+.btn-aceptar[disabled]:hover{
+cursor: not-allowed;
+}
+
+/*
+.btn-aceptar:hover {
+  background: rgb(50, 121, 50);
+  color: white;
+}
+*/
+.btn-cancelar {
+  background: rgb(242, 29, 29);
+}
+
+.btn-cancelar:hover {
+  background: rgba(243, 22, 22, 0.771);
+  color: white;
+}
+
+.button-center {
+  text-align: center;
+}
+.button-center button {
+  margin: 10px;
+}
+
+.color{
+  background-color: aqua;
+  height: 80vh;
 }

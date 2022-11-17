@@ -6,3 +6,50 @@ table {
 , tr{
   width: 15%;
 }
+.edit{
+  color: green;
+  padding: 5px;
+  }
+
+  .delete {
+  padding: 5px;
+  color: red;
+  }
+  .delete:hover {
+    color: white;
+    cursor: pointer;
+    background: red;
+    border-radius: 10px;
+  }
+
+  .details{
+  padding: 5px;
+  color:rgb(42, 133, 102);
+  }
+
+  .details:hover {
+    color: white;
+    cursor: pointer;
+    background: mediumseagreen;
+    border-radius: 10px;
+  }
+
+
+  .edit:hover {
+    color: white;
+    cursor: pointer;
+    background: rgb(91, 214, 91);
+    border-radius: 10px;
+  }
+
+  .nuevo{
+    margin-bottom: 10px;
+  }
+
+  h3{
+    width: 100%;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    box-shadow: 10px;
+  }
