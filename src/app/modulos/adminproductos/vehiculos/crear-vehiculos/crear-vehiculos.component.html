@@ -3,109 +3,94 @@
   <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
 </div>
 <form [formGroup]="fgValidador" (ngSubmit)="setGuardar()">
-  <div>
-    <div class="column-2">
-      <div *ngIf="clase == 'Editar'" class="column card padding-left">
-        <label>Id</label>
-        <input placeholder="Ingrese id " formControlName="id" matInput autocomplete="off" />
-      </div>
-      <div class="column card padding-left">
-        <label>Color</label>
-        <input placeholder="Ingrese color " formControlName="color" matInput autocomplete="off" />
-      </div>
+
+  <div class="content">
+    <div *ngIf="clase == 'Editar'" class="column">
+      <label for="id">ID</label>
+      <input type="text" formControlName="id" placeholder="ingrese id">
+      <mat-error *ngIf="this.fgValidador.controls['id'].invalid">{{ getError("id") }}</mat-error>
     </div>
 
-    <div class="column-2">
-      <div class="column card padding-left">
-        <label>Modelo</label>
-        <input placeholder="Ingrese modelo " formControlName="modelo" matInput autocomplete="off" />
-      </div>
-      <div class="column card padding-left">
-        <label>Serie_motor</label>
-        <input placeholder="Ingrese serie_motor " formControlName="serie_motor" matInput autocomplete="off" />
-      </div>
+    <div class="column">
+      <label for="color">Color</label>
+      <input type="text" formControlName="color" placeholder="ingrese color">
+      <mat-error *ngIf="this.fgValidador.controls['color'].invalid">{{ getError("color") }}</mat-error>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="column">
+      <label for="modelo">Modelo</label>
+      <input type="text" formControlName="modelo" placeholder="ingrese modelo">
+      <mat-error *ngIf="this.fgValidador.controls['modelo'].invalid">{{ getError("modelo") }}</mat-error>
     </div>
 
-    <div class="column-2">
-      <div class="column card padding-left">
-        <label>Estado</label>
-        <mat-select formControlName="estado" required>
-          <mat-option>--</mat-option>
-          <mat-option *ngFor="let dato of listaEstados" [value]="dato">
-            <span >{{ dato }}</span>
-          </mat-option>
-        </mat-select>
-      </div>
-
-      <div class=" card padding-left">
-        <label>Placa</label>
-        <input placeholder="Ingrese placa " formControlName="placa" matInput autocomplete="off" />
-      </div>
+    <div class="column">
+      <label for="serie_motor">Serie Motor</label>
+      <input type="text" formControlName="serie_motor" placeholder="ingrese serie_motor">
+      <mat-error *ngIf="this.fgValidador.controls['serie_motor'].invalid">{{ getError("serie_motor") }}</mat-error>
     </div>
+  </div>
 
-    <div class="column-2">
-      <div class="column card padding-left">
-        <label>servicioId</label>
-        <input placeholder="Ingrese servicioId " formControlName="servicioId" matInput autocomplete="off" />
-      </div>
+  <div class="content">
+    <div class="column">
+      <label for="placa">Placa</label>
+      <input type="text" formControlName="placa" placeholder="ingrese placa">
+      <mat-error *ngIf="this.fgValidador.controls['placa'].invalid">{{ getError("placa") }}</mat-error>
+    </div>
+  <div class="column">
+    <label for="esatdo">Estado</label>
+      <mat-select formControlName="estado">
+        <mat-option >--</mat-option>
+        <mat-option *ngFor="let dato of listaEstados" [value]="dato">
+          <span >{{ dato }} </span>
+        </mat-option>
+      </mat-select>
+    <mat-error *ngIf="this.fgValidador.controls['estado'].invalid">{{ getError("estado") }}</mat-error>
+  </div>
+</div>
 
-      <!-- campo lista de  marcas del vehiculo -->
-      <div class="column card padding-left">
-        <label>Marca ID</label>
-        <input placeholder="Ingrese Marca"   type="text"
-        matInput
-        formControlName="categoriaMarcaId"
-        [matAutocomplete]="auto"
-      />
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option
-          *ngFor="let categoria of listaCategoria"
-          [value]="categoria.nombre"
-        >
-          {{ categoria.nombre }}
+  <div class="content">
+    <div class="column">
+      <label for="clienteId">Cliente</label>
+      <input placeholder="seleccione Cliente " type="text" matInput formControlName="clienteId" required [matAutocomplete]="autoGroup">
+      <mat-autocomplete #autoGroup="matAutocomplete">
+        <mat-option *ngFor="let cliente of listaClientes" [value]="cliente.id">
+          {{ cliente.nombre }}
         </mat-option>
       </mat-autocomplete>
-      </div>
+      <mat-error *ngIf="this.fgValidador.controls['clienteId'].invalid">{{ getError("clienteId") }}</mat-error>
     </div>
 
-    <!-- campo lista de clientes disponibles para vehiculo -->
-    <div class="column-2">
-      <div class="column card padding-left">
-        <label>Cliente</label>
-        <input placeholder="seleccione Cliente " type="text"
-           matInput
-           formControlName="clienteId"
-           required
-           [matAutocomplete]="autoGroup">
-      <mat-autocomplete #autoGroup="matAutocomplete">
-        <mat-option
-        *ngFor="let cliente of listaClientes"
-        [value]="cliente.nombre"
-      >
-        {{ cliente.nombre }}
-      </mat-option>
-
+    <div class="column">
+      <label>Marca </label>
+      <input placeholder="Ingrese Marca" type="text" matInput formControlName="categoriaMarcaId" [matAutocomplete]="auto"/>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let categoria of listaCategoria" [value]="categoria.id">
+        {{ categoria.nombre }}
+        </mat-option>
       </mat-autocomplete>
-      </div>
+      <mat-error *ngIf="this.fgValidador.controls['categoriaMarcaId'].invalid">{{ getError("categoriaMarcaId") }}</mat-error>
     </div>
   </div>
-  <div class="button-center">
-    <button
-      class="btn-cancelar"
-      type="button"
-      routerLink="/productos/listar-vehiculos"
-      mat-button
-    >
-      Cancelar
-    </button>
-    <button
-      class="btn-aceptar"
-      type="submit"
-      [disabled]="!fgValidador.valid"
-      mat-button
-      cdkFocusInitial
-    >
-      Aceptar
-    </button>
+
+  <div class="content">
+    <div class="column">
+      <label for="servicioId">Servicio</label>
+      <input type="text" formControlName="servicioId" placeholder="ingrese servicioId">
+      <mat-error *ngIf="this.fgValidador.controls['servicioId'].invalid">{{ getError("servicioId") }}</mat-error>
+    </div>
   </div>
+
+  <div class="content">
+    <div class="column center">
+      <button class="btn-cancelar" type="button" routerLink="/productos/listar-vehiculos" mat-button>
+        Cancelar
+      </button>
+      <button class="btn-aceptar" type="submit" [disabled]="!fgValidador.valid" mat-button cdkFocusInitial>
+        Aceptar
+      </button>
+    </div>
+  </div>
+
 </form>

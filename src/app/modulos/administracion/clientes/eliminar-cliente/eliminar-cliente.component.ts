@@ -36,12 +36,14 @@ export class EliminarClienteComponent implements OnInit {
   setDelete() {
     this.loading = true;
     let codigo = this.fgValidador.controls['id'].value;
-    this.servicioCliente.setDelete(codigo).subscribe(
+    this.servicioCliente.setDeleteFull(codigo).subscribe(
       (datos: ModeloClientes) => {
         this.cancelar();
         this.mensajeExito();
       },
-      (error: any) => {}
+      (error: any) => {
+        this.mensajeFallo()
+      }
     );
   }
 
@@ -54,9 +56,17 @@ export class EliminarClienteComponent implements OnInit {
 
   mensajeExito() {
     this._snackBar.open(`El cliente se elimino con exito`, '', {
+      duration: 5000,
+    });
+    //window.location.reload();
+  }
+
+  mensajeFallo() {
+    this._snackBar.open(`Ocurrio un error inesperado`, '', {
       duration: 2000,
     });
-    this.router.navigate(['/administracion/listar-clientes']);
+    this.cancelar();
+    this.loading = false;
   }
 
   cancelar() {

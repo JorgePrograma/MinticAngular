@@ -8,7 +8,6 @@ h3 {
 label {
   font-size: 14px;
   color: #075b63;
-  padding: 10px;
 }
 
 /* clase para Inpun*/
@@ -25,22 +24,47 @@ input {
   padding: 10px;
 }
 
-.aceptar2 {
-  border-radius: 10px;
-  color: #131313;
-  background: #43c4cf;
-  margin: 20px 0px;
-  padding:10px;
-}
-
-.aceptar2:hover {
-  border-radius: 10px;
-  color: #131313;
-  cursor: pointer;
-  background: #24ddee;
-}
-
-.form-control-content{
+.form-control-content {
   margin-top: 20px;
   padding: 10px;
+}
+
+.registrarse {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.registrarse:hover {
+  color: #48cf43;
+}
+
+.container-login{
+  width: 400px;
+}
+
+.content{
+justify-content: center;
+display: flex;
+}
+
+h3{
+  margin: 0px;
+}
+
+.btn-aceptar{
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.btn-aceptar:hover{
+  border-radius: 10px;
+  padding: 10px;
+  color: #48cf43;
+  cursor: pointer;
+  color: white;
+}
+
+.mat-elevation-z
+{
+  background: red;
 }

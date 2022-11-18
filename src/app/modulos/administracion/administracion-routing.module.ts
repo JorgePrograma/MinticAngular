@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ValidadorSesionGuard } from 'src/app/guardianes/validador-sesion.guard';
 import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.component';
 import { EliminarClienteComponent } from './clientes/eliminar-cliente/eliminar-cliente.component';
 import { ListarClienteComponent } from './clientes/listar-cliente/listar-cliente.component';
@@ -19,47 +20,58 @@ const routes: Routes = [
   },{
     path: 'editar-cliente/:id',
     component: CrearClienteComponent,
+    canActivate:[ValidadorSesionGuard]
   },{
     path: 'eliminar-cliente',
     component: EliminarClienteComponent,
+    canActivate:[ValidadorSesionGuard]
   },{
     path: 'listar-clientes',
     component: ListarClienteComponent,
+    canActivate:[ValidadorSesionGuard]
   },
 
   // rutas de empleados
   {
     path: 'crear-empleado',
     component: CrearEmpleadosComponent,
+    canActivate:[ValidadorSesionGuard]
   },
   {
     path: 'editar-empleado/:id',
     component: CrearClienteComponent,
+    canActivate:[ValidadorSesionGuard]
   },
   {
     path: 'eliminar-empleado',
     component: EditarEmpleadosComponent,
+    canActivate:[ValidadorSesionGuard]
   },
   {
     path: 'listar-empleados',
     component: ListarEmpleadosComponent,
+    canActivate:[ValidadorSesionGuard]
   },
   // rutas de directivos
   {
     path: 'crear-directivo',
     component: CrearDirectivoComponent,
+    canActivate:[ValidadorSesionGuard]
   },
   {
     path: 'editar-directivo',
     component: EditarDirectivoComponent,
+    canActivate:[ValidadorSesionGuard]
   },
   {
     path: 'eliminar-directivo',
     component: EliminarDirectivoComponent,
+    canActivate:[ValidadorSesionGuard]
   },
   {
     path: 'listar-directivos',
     component: ListarDirectivoComponent,
+    canActivate:[ValidadorSesionGuard]
   },
 ];
 

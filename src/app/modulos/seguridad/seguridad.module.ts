@@ -7,6 +7,7 @@ import { CambioClaveComponent } from './cambio-clave/cambio-clave.component';
 import { RecuperarClaveComponent } from './recuperar-clave/recuperar-clave.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CerrarsesionComponent } from './cerrarsesion/cerrarsesion.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -14,13 +15,15 @@ import { CerrarsesionComponent } from './cerrarsesion/cerrarsesion.component';
     IdentificacionComponent,
     CambioClaveComponent,
     RecuperarClaveComponent,
-    CerrarsesionComponent
+    CerrarsesionComponent,
   ],
   imports: [
     CommonModule,
     SeguridadRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
+
   ]
 })
 export class SeguridadModule { }

@@ -22,12 +22,20 @@ export class CategoriaService {
 
   // obtener todos los registros
   getListar(): Observable<ModeloCategoria[]> {
-    return this.http.get<ModeloCategoria[]>(`${this.url}/categoria-marcas`);
+    return this.http.get<ModeloCategoria[]>(`${this.url}/categoria-marcas`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      }),
+    });
   }
 
   // obtener todos los registros por id
   getListarId(id: string): Observable<ModeloCategoria> {
-    return this.http.get<ModeloCategoria>(`${this.url}/categoria-marcas/${id}`);
+    return this.http.get<ModeloCategoria>(`${this.url}/categoria-marcas/${id}`,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      }),
+    });
   }
 
   // agregar una nueva categoria
@@ -37,7 +45,7 @@ export class CategoriaService {
       categoria,
       {
         headers: new HttpHeaders({
-          Authorizacion: `Bearer ${this.token}`,
+          Authorization: `Bearer ${this.token}`,
         }),
       }
     );
@@ -50,7 +58,7 @@ export class CategoriaService {
       categoria,
       {
         headers: new HttpHeaders({
-          Authorizacion: `Bearer ${this.token}`,
+          Authorization: `Bearer ${this.token}`,
         }),
       }
     );
@@ -60,7 +68,7 @@ export class CategoriaService {
   setDelete(id: string): Observable<any> {
     return this.http.delete(`${this.url}/categoria-marcas/${id}`, {
       headers: new HttpHeaders({
-        Authorizacion: `Bearer ${this.token}`,
+        Authorization: `Bearer ${this.token}`,
       }),
     });
   }

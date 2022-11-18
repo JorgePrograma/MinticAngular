@@ -1,22 +1,61 @@
-<div class="container-login">
-  <h3>Login</h3>
-  <div class="card">
-    <form [formGroup]="fgValidador" (ngSubmit)="IdentificarUsuario()">
-      <div class="form-control-content">
-        <div class="form-control">
-          <label for="usuario">Usuario</label>
-          <input type="email" id="usuario" formControlName="usuario" />
+<div class="content">
+  <div class="container-login">
+    <h3>Inicio de sesion</h3>
+    <div class="card">
+      <form [formGroup]="fgValidador" (ngSubmit)="IdentificarUsuario()">
+        <div class="form-control-content">
+          <!--Campo usuario -->
+          <div class="form-control">
+            <label for="usuario">Usuario</label>
+            <input
+              type="email"
+              id="usuario"
+              formControlName="usuario"
+              placeholder="correo@gmail.com"
+            />
+            <mat-error *ngIf="this.fgValidador.controls['usuario'].invalid && this.fgValidador.controls['usuario'].touched">{{
+              getErrorCorreo()
+            }}</mat-error>
+          </div>
+
+          <!-- campo clave-->
+          <div class="form-control">
+            <label for="clave">Password</label>
+            <div class="flex">
+              <input
+                matInput
+                formControlName="clave"
+                placeholder="xxxxxxxx"
+                [type]="hide ? 'password' : 'text'"
+              />
+              <mat-icon matSuffix (click)="hide = !hide">{{
+                hide ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </div>
+            <mat-error *ngIf="this.fgValidador.controls['clave'].invalid && this.fgValidador.controls['clave'].touched">{{
+              getErrorClave()
+            }}</mat-error>
+          </div>
+
+          <!-- Boton de registrar y iniciar sesion-->
+          <div class="center">
+            <button
+              [disabled]="!fgValidador.valid"
+              type="submit"
+              class="btn-aceptar"
+            >
+              Aceptar
+            </button>
+            <a
+              mat-button
+              class="registrarse"
+              routerLink="/administracion/crear-cliente"
+            >
+              registrarse
+            </a>
+          </div>
         </div>
-        <div class="form-control">
-          <label for="clave">Password</label>
-          <input type="password" id="clave" formControlName="clave" />
-        </div>
-        <div class="center">
-          <button class="aceptar2" [disabled]="!fgValidador.valid" type="submit">
-            Aceptar
-          </button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

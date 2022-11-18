@@ -24,12 +24,18 @@ export class VehiculoService {
 
   // obtener todos los registros
   getListar(): Observable<ModeloVehiculo[]> {
-    return this.http.get<ModeloVehiculo[]>(`${this.url}/vehiculos`);
+    return this.http.get<ModeloVehiculo[]>(`${this.url}/vehiculos`, {headers:new HttpHeaders({
+      Authorization:`Bearer ${this.token}`
+    })});
   }
 
   // obtener todos los registros por id
   getListarId(id: string): Observable<ModeloVehiculo> {
-    return this.http.get<ModeloVehiculo>(`${this.url}/vehiculos/${id}`);
+    return this.http.get<ModeloVehiculo>(`${this.url}/vehiculos/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      }),
+    });
   }
 
   // agregar una nuevo vehiculo
@@ -39,7 +45,7 @@ export class VehiculoService {
       vehiculo,
       {
         headers: new HttpHeaders({
-          Authorizacion: `Bearer ${this.token}`
+          Authorization: `Bearer ${this.token}`
         })
       }
     )
@@ -52,7 +58,7 @@ export class VehiculoService {
       vehiculo,
       {
         headers: new HttpHeaders({
-          Authorizacion: `Bearer ${this.token}`,
+          Authorization: `Bearer ${this.token}`,
         }),
       }
     );
@@ -62,7 +68,7 @@ export class VehiculoService {
   setDelete(id: string): Observable<any> {
     return this.http.delete(`${this.url}/vehiculos/${id}`, {
       headers: new HttpHeaders({
-        Authorizacion: `Bearer ${this.token}`,
+        Authorization: `Bearer ${this.token}`,
       }),
     });
   }

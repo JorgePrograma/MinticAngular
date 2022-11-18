@@ -1,146 +1,102 @@
-<div>
-  <div class="flex">
-    <h3>{{ clase }} cliente</h3>
-    <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
-  </div>
-  <form [formGroup]="fgValidador" (ngSubmit)="setGuardar()">
-    <div class="contenido">
-      <div class="column-2">
-        <!-- campo id -->
-        <div *ngIf="clase == 'Editar'" class="mat-form-field-flex  column">
-          <label for="id">ID</label>
-          <input placeholder="id" type="text" formControlName="id" />
-        </div>
-
-        <!-- campo cedula -->
-        <div class="mat-form-field-flex  column">
-          <label for="cedula">Cedula</label>
-          <input placeholder="cedula" type="text" formControlName="cedula" />
-        </div>
-      </div>
-
-      <div class="column-2">
-        <!-- campo nombre -->
-        <div class="mat-form-field-flex  column">
-          <label for="nombre">Nombres</label>
-          <input placeholder="nombre" type="text" formControlName="nombre" />
-        </div>
-
-        <!-- campo apellidos -->
-        <div class="mat-form-field-flex  column">
-          <label for="apellido">Apellidos</label>
-          <input
-            placeholder="apellido"
-            type="text"
-            formControlName="apellido"
-          />
-        </div>
-      </div>
-
-      <div class="column-2">
-        <!-- campo telefono -->
-        <div class="mat-form-field-flex  column">
-          <label for="telefono">Telefono</label>
-          <input
-            placeholder="telefono"
-            type="text"
-            formControlName="telefono"
-          />
-        </div>
-
-        <!-- campo correo -->
-        <div class="mat-form-field-flex  column">
-          <label for="correo">Correo</label>
-          <input placeholder="correo" type="text" formControlName="correo" />
-        </div>
-      </div>
-
-      <div class="column-2">
-        <!-- campo direccion -->
-        <div class="mat-form-field-flex  column">
-          <label for="direccion">Direccion</label>
-          <input
-            placeholder="direccion"
-            type="text"
-            formControlName="direccion"
-          />
-        </div>
-
-        <!-- campo Fecha de nacimiento -->
-        <div class="mat-form-field-flex  column">
-          <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-          <input
-            placeholder="fecha_nacimiento"
-            type="date"
-            formControlName="fecha_nacimiento"
-          />
-        </div>
-      </div>
-
-      <div class="column-2">
-        <!-- campo edad -->
-        <div *ngIf="clase == 'Editar'" class="mat-form-field-flex  column">
-          <label for="edad">edad</label>
-          <input placeholder="edad" type="text" formControlName="edad" />
-        </div>
-
-        <!-- campo clave -->
-        <div *ngIf="clase == 'Editar'" class="mat-form-field-flex  column">
-          <label for="clave">Clave</label>
-          <div class="flex">
-            <input
-              placeholder="clave"
-              formControlName="clave"
-              matInput
-              [type]="hide ? 'password' : 'text'"
-            />
-            <button
-              mat-icon-button
-              matSuffix
-              type="button"
-              (click)="hide = !hide"
-              [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide"
-            >
-              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="column-2">
-        <!-- campo empresa -->
-        <div *ngIf="clase == 'Editar'" class="mat-form-field-flex  column">
-          <label for="empresa_id">Empresa</label>
-          <input
-            placeholder="empresaId"
-            type="text"
-            formControlName="empresaId"
-          />
-        </div>
-      </div>
-
-      <!-- Botones -->
-      <div class="button-center">
-        <button
-          type="button"
-          mat-button
-          class="btn-cancelar"
-          routerLink="/administracion/listar-clientes"
-        >
-          Cancelar
-        </button>
-
-        <button
-          type="button"
-          mat-button
-          class="btn-aceptar"
-          [disabled]="!fgValidador.valid"
-          type="submit"
-        >
-          Aceptar
-        </button>
-      </div>
-    </div>
-  </form>
+<div class="flex">
+  <h3>{{ clase }} cliente</h3>
+  <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
 </div>
+<form [formGroup]="fgValidador" (ngSubmit)="setGuardar()">
+
+  <div class="content">
+    <div *ngIf="clase == 'Editar'" class="column">
+      <label for="id">ID</label>
+      <input type="text" formControlName="id" placeholder="ingrese id">
+      <mat-error *ngIf="this.fgValidador.controls['id'].invalid">{{ getError("id") }}</mat-error>
+    </div>
+
+    <div class="column">
+      <label for="cedula">Cedula</label>
+      <input type="text" formControlName="cedula" placeholder="ingrese cedula">
+      <mat-error *ngIf="this.fgValidador.controls['cedula'].invalid">{{ getError("cedula") }}</mat-error>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="column">
+      <label for="nombre">Nombre</label>
+      <input type="text" formControlName="nombre" placeholder="ingrese nombre">
+      <mat-error *ngIf="this.fgValidador.controls['nombre'].invalid">{{ getError("nombre") }}</mat-error>
+    </div>
+
+    <div class="column">
+      <label for="apellido">Apellidos</label>
+      <input type="text" formControlName="apellido" placeholder="ingrese apellido">
+      <mat-error *ngIf="this.fgValidador.controls['apellido'].invalid">{{ getError("apellido") }}</mat-error>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="column">
+      <label for="correo">Correo</label>
+      <input type="email" formControlName="correo" placeholder="ingrese correo">
+      <mat-error *ngIf="this.fgValidador.controls['correo'].invalid">{{ getError("correo") }}</mat-error>
+    </div>
+
+    <div class="column">
+      <label for="telefono">Telefono</label>
+      <input type="text" formControlName="telefono" placeholder="ingrese telefono">
+      <mat-error *ngIf="this.fgValidador.controls['telefono'].invalid">{{ getError("telefono") }}</mat-error>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="column">
+      <label for="fecha_nacimiento">Fecha de Naciemiento</label>
+      <input type="date" formControlName="fecha_nacimiento" placeholder="ingrese fecha_nacimiento">
+      <mat-error *ngIf="this.fgValidador.controls['fecha_nacimiento'].invalid">{{ getError("fecha_nacimiento") }}</mat-error>
+    </div>
+
+    <div class="column">
+      <label for="edad">Edad</label>
+      <input type="text" formControlName="edad" placeholder="ingrese edad">
+      <mat-error *ngIf="this.fgValidador.controls['edad'].invalid">{{ getError("edad") }}</mat-error>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="column">
+      <label for="direccion">Direccion</label>
+      <input type="text" formControlName="direccion" placeholder="ingrese direccion">
+      <mat-error *ngIf="this.fgValidador.controls['direccion'].invalid">{{ getError("direccion") }}</mat-error>
+    </div>
+
+    <div class="column">
+      <label for="empresaId">Empresa</label>
+      <input type="text" formControlName="empresaId" placeholder="ingrese empresaId">
+      <mat-error *ngIf="this.fgValidador.controls['empresaId'].invalid">{{ getError("empresaId") }}</mat-error>
+    </div>
+  </div>
+
+
+  <div class="content">
+    <div *ngIf="clase == 'Editar'" class="column" class="column">
+      <label for="clave">Clave</label>
+      <div class="flex">
+        <input matInput formControlName="clave" placeholder="xxxxxxxx" [type]="hide ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hide = !hide">{{
+          hide ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </div>
+      <mat-error *ngIf="this.fgValidador.controls['clave'].invalid">{{ getError("clave") }}</mat-error>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="column center">
+      <button class="btn-cancelar" type="button" routerLink="/administracion/listar-clientes" mat-button>
+        Cancelar
+      </button>
+      <button class="btn-aceptar" type="submit" [disabled]="!fgValidador.valid" mat-button cdkFocusInitial>
+        Aceptar
+      </button>
+    </div>
+  </div>
+
+</form>

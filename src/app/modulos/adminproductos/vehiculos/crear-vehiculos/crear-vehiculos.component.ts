@@ -180,4 +180,9 @@ export class CrearVehiculosComponent implements OnInit {
     this.router.navigate(['/productos/listar-vehiculos']);
   }
 
+  getError(campo: string) {
+    return this.fgValidador.controls[campo].hasError('required')
+      ? ' Este campo es requerido'
+      : '';
+  }
 }

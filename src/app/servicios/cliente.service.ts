@@ -25,12 +25,20 @@ export class ClienteService {
 
   // obtener todos los registros
   getListar(): Observable<ModeloClientes[]> {
-    return this.http.get<ModeloClientes[]>(`${this.url}/clientes`);
+    return this.http.get<ModeloClientes[]>(`${this.url}/clientes`,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      }),
+    });
   }
 
   // obtener todos los registros por id
   getListarId(id: string): Observable<ModeloClientes> {
-    return this.http.get<ModeloClientes>(`${this.url}/clientes/${id}`);
+    return this.http.get<ModeloClientes>(`${this.url}/clientes/${id}`,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      }),
+    });
   }
 
   // agregar una nuevo cliente
@@ -40,7 +48,7 @@ export class ClienteService {
       cliente,
       {
         headers: new HttpHeaders({
-          Authorizacion: `Bearer ${this.token}`,
+          Authorization: `Bearer ${this.token}`,
         }),
       }
     );
@@ -53,7 +61,7 @@ export class ClienteService {
       cliente,
       {
         headers: new HttpHeaders({
-          Authorizacion: `Bearer ${this.token}`,
+          Authorization: `Bearer ${this.token}`,
         }),
       }
     );
@@ -63,7 +71,15 @@ export class ClienteService {
   setDelete(id: string): Observable<any> {
     return this.http.delete(`${this.url}/clientes/${id}`, {
       headers: new HttpHeaders({
-        Authorizacion: `Bearer ${this.token}`,
+        Authorization: `Bearer ${this.token}`,
+      }),
+    });
+  }
+
+  setDeleteFull(id: string): Observable<any> {
+    return this.http.delete(`${this.url}/clientes/${id}/vehiculos`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
       }),
     });
   }
