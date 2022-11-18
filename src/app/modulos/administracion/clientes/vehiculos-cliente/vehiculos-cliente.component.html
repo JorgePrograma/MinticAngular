@@ -1,39 +1,43 @@
-<h3>Lista de vehiculos</h3>
-<!---Modal crear nueva categoria-->
-<a class="btn flow-text nuevo" routerLink="/productos/crear-vehiculo">
-  <span class="">nuevo</span>
-</a>
+<h3>Mis vehiculos</h3>
 
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
+  <table mat-table [dataSource]="dataSource">
     <!-- Name Column -->
     <ng-container matColumnDef="color">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>color</th>
+      <th mat-header-cell *matHeaderCellDef>color</th>
       <td mat-cell *matCellDef="let element">{{ element.color }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="modelo">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>modelo</th>
+      <th mat-header-cell *matHeaderCellDef>modelo</th>
       <td mat-cell *matCellDef="let element">{{ element.modelo }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="serie_motor">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>serie_motor</th>
+      <th mat-header-cell *matHeaderCellDef>serie_motor</th>
       <td mat-cell *matCellDef="let element">{{ element.serie_motor }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="placa">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>placa</th>
+      <th mat-header-cell *matHeaderCellDef>placa</th>
       <td mat-cell *matCellDef="let element">{{ element.placa }}</td>
     </ng-container>
-   
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef>estado</th>
+      <td mat-cell *matCellDef="let element">{{ element.estado }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="marca">
+      <th mat-header-cell *matHeaderCellDef>marca</th>
+      <td mat-cell *matCellDef="let element">{{ element.marca }}</td>
+    </ng-container>
+
     <!-- Weight Column -->
     <ng-container matColumnDef="acciones">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
@@ -49,12 +53,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
 
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-    aria-label="Select page of periodic elements"
-  >
-  </mat-paginator>
+
+  </table>
 </div>

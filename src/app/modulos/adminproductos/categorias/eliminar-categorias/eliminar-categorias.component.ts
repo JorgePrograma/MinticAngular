@@ -57,7 +57,7 @@ export class EliminarCategoriasComponent implements OnInit {
     this._snackBar.open(`La categoria se elimino con exito`, '', {
       duration: 2000,
     });
-    this.router.navigate(['/productos/listar-categorias']);
+      window.location.reload();
   }
 
   cancelar() {

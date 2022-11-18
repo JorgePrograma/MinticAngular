@@ -2,13 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ModeloClientes } from '../modelos/cliente.modelo';
+import { ModeloVehiculo } from '../modelos/vehiculo.modelo';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClienteService {
-
   url = 'http://localhost:3000';
   token: string = '';
 
@@ -25,7 +25,7 @@ export class ClienteService {
 
   // obtener todos los registros
   getListar(): Observable<ModeloClientes[]> {
-    return this.http.get<ModeloClientes[]>(`${this.url}/clientes`,{
+    return this.http.get<ModeloClientes[]>(`${this.url}/clientes`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.token}`,
       }),
@@ -34,24 +34,32 @@ export class ClienteService {
 
   // obtener todos los registros por id
   getListarId(id: string): Observable<ModeloClientes> {
-    return this.http.get<ModeloClientes>(`${this.url}/clientes/${id}`,{
+    return this.http.get<ModeloClientes>(`${this.url}/clientes/${id}`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.token}`,
       }),
     });
   }
 
-  // agregar una nuevo cliente
-  setAdd(cliente: ModeloClientes): Observable<ModeloClientes> {
-    return this.http.post<ModeloClientes>(
-      `${this.url}/clientes`,
-      cliente,
+  // obtener todos los vehiculos del cliente
+  getListarVehiculoCliente(id: string): Observable<ModeloVehiculo[]> {
+    return this.http.get<ModeloVehiculo[]>(
+      `${this.url}/clientes/${id}/vehiculos`,
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`,
         }),
       }
     );
+  }
+
+  // agregar una nuevo cliente
+  setAdd(cliente: ModeloClientes): Observable<ModeloClientes> {
+    return this.http.post<ModeloClientes>(`${this.url}/clientes`, cliente, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      }),
+    });
   }
 
   // editar un cliente

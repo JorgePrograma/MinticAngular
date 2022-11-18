@@ -94,7 +94,7 @@ export class CrearVehiculosComponent implements OnInit {
     datos.categoriaMarcaId = categoriaMarcaId;
     datos.servicioId = servicioId;
 
-    this.servicioVehiculo.setAdd(datos).subscribe(
+    this.servicioVehiculo.setAdd(datos,clienteId).subscribe(
       (datos: ModeloVehiculo) => {
         this.mensajeExito('registrado');
         console.log('mensaje', datos);

@@ -56,7 +56,7 @@ export class EliminarVehiculosComponent implements OnInit {
     this._snackBar.open(`El vehiculo se elimino con exito`, '', {
       duration: 2000,
     });
-    this.router.navigate(['/productos/listar-vehiculos']);
+    window.location.reload();
   }
 
   cancelar() {

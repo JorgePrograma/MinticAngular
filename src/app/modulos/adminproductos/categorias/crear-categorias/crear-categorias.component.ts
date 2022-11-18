@@ -109,6 +109,6 @@ export class CrearCategoriasComponent implements OnInit {
         duration: 2000,
       }
     );
-    this.router.navigate(['/productos/listar-categorias']);
+    window.location.reload();
   }
 }

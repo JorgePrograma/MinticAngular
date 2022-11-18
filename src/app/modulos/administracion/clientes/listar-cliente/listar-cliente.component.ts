@@ -8,6 +8,7 @@ import { ModeloClientes } from 'src/app/modelos/cliente.modelo';
 import { ClienteService } from 'src/app/servicios/cliente.service';
 import { DetallesClienteComponent } from '../detalles-cliente/detalles-cliente.component';
 import { EliminarClienteComponent } from '../eliminar-cliente/eliminar-cliente.component';
+import { VehiculosClienteComponent } from '../vehiculos-cliente/vehiculos-cliente.component';
 
 @Component({
   selector: 'app-listar-cliente',
@@ -63,6 +64,22 @@ export class ListarClienteComponent implements OnInit {
       this.router.navigate(['/administracion/listar-clientes']);
     });
   }
+
+  DetallesMisVehiculosModals(id: string) {
+    const dialogRef = this.dialog.open(VehiculosClienteComponent, {
+      width: '700px',
+      height:'500px',
+      disableClose: true,
+      data: { id: id },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.router.navigate(['/administracion/listar-clientes']);
+    });
+  }
+
+
+
 
   DeteleModals(id: string) {
     const dialogRef = this.dialog.open(EliminarClienteComponent, {

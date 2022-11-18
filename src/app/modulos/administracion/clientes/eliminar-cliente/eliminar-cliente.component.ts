@@ -39,7 +39,9 @@ export class EliminarClienteComponent implements OnInit {
     this.servicioCliente.setDeleteFull(codigo).subscribe(
       (datos: ModeloClientes) => {
         this.cancelar();
-        this.mensajeExito();
+        this.servicioCliente.setDelete(codigo).subscribe((datos1:ModeloClientes)=>{
+          this.mensajeExito();
+        })
       },
       (error: any) => {
         this.mensajeFallo()
@@ -58,7 +60,7 @@ export class EliminarClienteComponent implements OnInit {
     this._snackBar.open(`El cliente se elimino con exito`, '', {
       duration: 5000,
     });
-    //window.location.reload();
+    window.location.reload();
   }
 
   mensajeFallo() {

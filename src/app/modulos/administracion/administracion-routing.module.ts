@@ -4,6 +4,7 @@ import { ValidadorSesionGuard } from 'src/app/guardianes/validador-sesion.guard'
 import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.component';
 import { EliminarClienteComponent } from './clientes/eliminar-cliente/eliminar-cliente.component';
 import { ListarClienteComponent } from './clientes/listar-cliente/listar-cliente.component';
+import { VehiculosClienteComponent } from './clientes/vehiculos-cliente/vehiculos-cliente.component';
 import { CrearDirectivoComponent } from './directivos/crear-directivo/crear-directivo.component';
 import { EditarDirectivoComponent } from './directivos/editar-directivo/editar-directivo.component';
 import { EliminarDirectivoComponent } from './directivos/eliminar-directivo/eliminar-directivo.component';
@@ -28,6 +29,11 @@ const routes: Routes = [
   },{
     path: 'listar-clientes',
     component: ListarClienteComponent,
+    canActivate:[ValidadorSesionGuard]
+  },
+  {
+    path: 'mis-vehiculos/:id',
+    component: VehiculosClienteComponent,
     canActivate:[ValidadorSesionGuard]
   },
 

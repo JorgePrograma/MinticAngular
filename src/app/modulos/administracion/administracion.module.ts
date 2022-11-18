@@ -22,6 +22,7 @@ import { ListarDirectivoComponent } from './directivos/listar-directivo/listar-d
 // otros Modulos componentes
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DetallesClienteComponent } from './clientes/detalles-cliente/detalles-cliente.component';
+import { VehiculosClienteComponent } from './clientes/vehiculos-cliente/vehiculos-cliente.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { DetallesClienteComponent } from './clientes/detalles-cliente/detalles-c
     EditarDirectivoComponent,
     ListarDirectivoComponent,
     ListarClienteComponent,
-    DetallesClienteComponent
+    DetallesClienteComponent,
+    VehiculosClienteComponent
   ],
   imports: [
     CommonModule,

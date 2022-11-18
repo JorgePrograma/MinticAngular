@@ -1,11 +1,11 @@
-.edit{
-color: green;
-padding: 5px;
+.edit {
+  color: green;
+  padding: 5px;
 }
 
 .delete {
-padding: 5px;
-color: red;
+  padding: 5px;
+  color: red;
 }
 .delete:hover {
   color: white;
@@ -14,9 +14,9 @@ color: red;
   border-radius: 10px;
 }
 
-.details{
-padding: 5px;
-color:rgb(42, 133, 102);
+.details {
+  padding: 5px;
+  color: rgb(42, 133, 102);
 }
 
 .details:hover {
@@ -26,6 +26,17 @@ color:rgb(42, 133, 102);
   border-radius: 10px;
 }
 
+.miscarros {
+  padding: 5px;
+  color: rgb(42, 115, 133);
+}
+
+.miscarros:hover {
+  color: white;
+  cursor: pointer;
+  background: rgb(60, 98, 179);
+  border-radius: 10px;
+}
 
 .edit:hover {
   color: white;
@@ -34,11 +45,11 @@ color:rgb(42, 133, 102);
   border-radius: 10px;
 }
 
-.nuevo{
+.nuevo {
   margin-bottom: 10px;
 }
 
-h3{
+h3 {
   width: 100%;
   padding: 5px;
   font-size: 20px;

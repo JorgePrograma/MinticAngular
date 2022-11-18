@@ -21,7 +21,6 @@ export class ListarVehiculosComponent implements OnInit {
     'modelo',
     'serie_motor',
     'placa',
-    'clienteId',
     'acciones',
   ];
   dataSource: MatTableDataSource<ModeloVehiculo>;

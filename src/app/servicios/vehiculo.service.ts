@@ -39,9 +39,9 @@ export class VehiculoService {
   }
 
   // agregar una nuevo vehiculo
-  setAdd(vehiculo: ModeloVehiculo): Observable<ModeloVehiculo> {
+  setAdd(vehiculo: ModeloVehiculo, id:string): Observable<ModeloVehiculo> {
     return this.http.post<ModeloVehiculo>(
-      `${this.url}/vehiculos`,
+      `${this.url}/clientes/${id}/vehiculos`,
       vehiculo,
       {
         headers: new HttpHeaders({
@@ -54,6 +54,7 @@ export class VehiculoService {
   // editar un vehiculo
   setUpdate(vehiculo: ModeloVehiculo): Observable<ModeloVehiculo> {
     return this.http.patch<ModeloVehiculo>(
+
       `${this.url}/vehiculos/${vehiculo.id}`,
       vehiculo,
       {
